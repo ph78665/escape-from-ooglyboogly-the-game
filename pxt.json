@@ -1,5 +1,6 @@
 {
     "name": "Escape from Ooglyboogly: The Game",
+    "version": "0.0.1",
     "description": "",
     "dependencies": {
         "device": "*",
