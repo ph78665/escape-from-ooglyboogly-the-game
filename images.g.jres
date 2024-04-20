@@ -34,11 +34,6 @@
         "mimeType": "image/x-mkcd-f4",
         "displayName": "Lemon"
     },
-    "image9": {
-        "data": "hwQgACAAAAAAAAAAsMzMDAAAAAAAAAAAAAAAALsREcsAAAAAAAAAAAAAsMwcsRuxDAAAAADAzMwAANsRHLu7EQwAAAAAvBGxALDdERzbuxEMAAAAwNsRsQDb3REc3N0RDADAzMzdEbGw3d0RHLzdzQAAvB3N3RGx293dEdzBy8zMzLwb0dsRsdvd3RHcsd27u7u7uxHbEbHb3d0RHB3b3d3d3b0R2xGx293dERwdvdG7u7u7G7ERsdvd3RHc0bERu93d3RuxEbHb3d0RvNHRGxEREREbsRGx293dEbwdHRvb3d3dG7ERsdvd3RG8Gx0bu93d3RuxEbHb3d0RvBsdGxEREREbsRGx293dEbwbHRsRERERG7ERsdvd3RG8Gx0bu93d3RuxEbHb3d0RvB0dG9vd3d0bsRGx293dEbzR0RsRERERG7ERsdvd3RHc0bERu93d3RuxEbHb3d0RHB290bu7u7sbsRGx293dERwd293d3d29EdsRsdvd3RHcsd27u7u7uxHbEbHb3d0R3MHLzMzMvBvR2xGxsN3dERy83c0AALwdzd0RsQDb3REc3N0RDADAzMzdEbEAsN0RHNu7EQwAAADA2xGxAADbERy7uxEMAAAAALwRsQAAsMwcsRuxDAAAAADAzMwAAAAAuxERywAAAAAAAAAAAAAAALDMzAwAAAAAAAAAAA==",
-        "mimeType": "image/x-mkcd-f4",
-        "displayName": "Pillar"
-    },
     "image10": {
         "data": "hwQPABAAAAAAAAAAzMzMAABmzMzczcwMYHaXaca9vAxgd3dpxt28y3Z3iJdm3LzLdod4l2bcu8t2iHiXZty7y3Z4eJdm3LvLdoh4l2bcu8t2h3iXZty7y3Z3iJdm3LzLYHd3acbdvMtgdpdpxr28DABmzMzczcwMAAAAAMzMzAA=",
         "mimeType": "image/x-mkcd-f4",
@@ -48,6 +43,11 @@
         "data": "hwQgACAAAADd3d3d3d3d3d3d3d3d3d3d3d3d3X133d3d3d3d3d3d3d3d3d19d9fd3d3d3d3d3d3d3f//d3f3393d3d3d3f/d3Xd3d3dmd9/d3d3d3f3f3d13Z3Zmdnff3d3d3d3/3d3dd3dmd3d3193d3d3d393d3Xd2d2d2d9fd3d3d/d/d3d1ndndnZnbX3d3d3f/d3d3dZ3Z3d3d2193d3d3f3d3d3Xd2d3Z3d3fd3d393d3d3d13Znd2ZnZ33d3d/d3d3d3dd3dndmd2d93d3f/d3d3d3X13d3d3d9fd3d3f3d3d3d19d/d/d3fX3d39393d3d3d3d3d3d3d3d3d/d3d3d3d39/d3d3d3d3d3f3d3d3d3f/d3d3d3d3d3d393d3d3d3d3d3d3d3d3d3d/d3d3d3d/93d3f/f3d3d3f3d3d3d3d/f3f3//9/d3d393d3d3d3d3d1/d3f/3Xfd/d/d3d3d3d3df2dmd3d3193f3d3d3d3d/X93Z2Z3dtfd393d3d3d3f9/d3d3d2bX3f/d3d3d3d3/d3d3d3dn1939393d3d3d/3d3d3d2d9fd3d/d3d3d3f9/d2Zmdtfd3d39393d3d39f3d3993d3d3d3f/d3d3d/f/////d3d3d3d39393d3d39///d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3Q==",
         "mimeType": "image/x-mkcd-f4",
         "displayName": "Scare"
+    },
+    "image9": {
+        "data": "hwQgABAAAAAAAADMDAAAAAAAwLzLDAAAAADAu7sMAAAAALy7u8sAAADAu929ywAAALwT0d3LAAAAOxER3bsMALA7ERHduwwAsDMREdG7DACwMxERsbsMADszExGzuwywOzEzM7O7DLsbETMzM7u8uxsRMzMzu7zbGxEzMzO7vN0bETMzM7vc3TsxMzMRuxzROzMzExG9HBE7MzMTEb28ETszMxMRvbzbOzMzM9G7DLs7MzMzs7sMsLAzETOzuwwAsBMRMbO7DACwGxERu7sMAAAbERG7uwwAANsR0bvLAAAAsN3du8sAAAAA2727ywAAAADAu7sMAAAAAMC8ywwAAAAAAMwMAAAA",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "Pillar"
     },
     "anim1": {
         "namespace": "myAnimations",
