@@ -16,6 +16,9 @@ namespace SpriteKind {
     export const Hearing = SpriteKind.create()
     export const Minimap = SpriteKind.create()
 }
+sprites.onCreated(SpriteKind.Enemy, function (sprite) {
+    Canshoot = 0
+})
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Spring, function (sprite, otherSprite) {
     Boing.follow(Player_1, 200)
     for (let index = 0; index < 20; index++) {
@@ -156,6 +159,7 @@ controller.combos.attachCombo("" + controller.combos.idToString(controller.combo
     info.changeLifeBy(10)
 })
 controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
+    console.log("Crouch")
     Render.setSpriteAttribute(Player_1, RCSpriteAttribute.ZOffset, -4)
     Render.moveWithController(1, 2, 0.5)
     music.setVolume(127)
@@ -364,27 +368,29 @@ controller.anyButton.onEvent(ControllerButtonEvent.Pressed, function () {
     }
 })
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
-    projectile = sprites.createProjectileFromSprite(img`
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . 3 3 3 . . . . . . . 
-        . . . . . 3 b b b 3 . . . . . . 
-        . . . . . 3 b 1 b 3 . . . . . . 
-        . . . . . 3 b b 1 3 . . . . . . 
-        . . . . . . 3 3 3 . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        `, Player_1, Render.getAttribute(Render.attribute.dirX) * 100, Render.getAttribute(Render.attribute.dirY) * 100)
-    projectile.setFlag(SpriteFlag.AutoDestroy, false)
-    projectile.setFlag(SpriteFlag.DestroyOnWall, true)
-    projectile.startEffect(effects.fire, 5000)
+    if (!(controller.B.isPressed()) && Canshoot == 0) {
+        console.log("Projectile created")
+        projectile = sprites.createProjectileFromSprite(img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . 3 3 3 . . . . . . . 
+            . . . . . 3 b b b 3 . . . . . . 
+            . . . . . 3 b 1 b 3 . . . . . . 
+            . . . . . 3 b b 1 3 . . . . . . 
+            . . . . . . 3 3 3 . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `, Player_1, Render.getAttribute(Render.attribute.dirX) * 100, Render.getAttribute(Render.attribute.dirY) * 100)
+        projectile.setFlag(SpriteFlag.AutoDestroy, false)
+        projectile.setFlag(SpriteFlag.DestroyOnWall, true)
+    }
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Lemon, function (sprite, otherSprite) {
     music.play(music.createSoundEffect(WaveShape.Square, 312, 312, 0, 255, 1000, SoundExpressionEffect.Tremolo, InterpolationCurve.Linear), music.PlaybackMode.InBackground)
@@ -586,6 +592,7 @@ info.onLifeZero(function () {
         dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
         `)
     pause(2000)
+    game.setGameOverPlayable(false, music.melodyPlayable(music.powerDown), false)
     game.setGameOverMessage(false, "You Died.")
     game.setDialogCursor(img`
         ........................
@@ -621,12 +628,14 @@ scene.onOverlapTile(SpriteKind.Player, sprites.castle.tileGrass2, function (spri
     Ooglyboogly.follow(Player_1, 40)
 })
 controller.B.onEvent(ControllerButtonEvent.Released, function () {
+    console.log("Uncrouch")
     music.setVolume(255)
     Render.setSpriteAttribute(Player_1, RCSpriteAttribute.ZOffset, 0)
     Render.moveWithController(2, 3, 1)
     Ooglyboogly.follow(Player_1, 40)
 })
 info.onScore(50, function () {
+    game.setGameOverEffect(true, effects.starField)
     game.gameOver(true)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Hi, function (sprite, otherSprite) {
@@ -659,6 +668,9 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Hi, function (sprite, otherSprit
         `, SpriteKind.Hi)
     tiles.placeOnTile(Face, tiles.getTileLocation(randint(1, 30), randint(1, 64)))
     Face.follow(Player_1, 10)
+})
+sprites.onDestroyed(SpriteKind.Enemy, function (sprite) {
+    Canshoot = 1
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Bush, function (sprite, otherSprite) {
     if (controller.B.isPressed()) {
@@ -966,6 +978,8 @@ let EYE: Sprite = null
 let Ooglyboogly: Sprite = null
 let Player_1: Sprite = null
 let Hardmode = 0
+let Canshoot = 0
+Canshoot = 0
 Hardmode = 0
 let i = 0
 game.setDialogCursor(img`
