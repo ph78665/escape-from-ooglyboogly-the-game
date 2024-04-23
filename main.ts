@@ -156,7 +156,8 @@ controller.combos.attachCombo("" + controller.combos.idToString(controller.combo
         111111111111111111111111111111111111111111111111111111111111111111111111111ffffffffffffffffffffffffffffffff11111111111111111111111111111111111111111111111111111
         1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
         `)
-    info.changeLifeBy(10)
+    info.changeLifeBy(50)
+    info.startCountdown(10)
 })
 controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
     console.log("Crouch")
@@ -349,6 +350,7 @@ controller.combos.attachCombo("" + controller.combos.idToString(controller.combo
         sprites.destroy(PC)
         sprites.destroy(projectile)
         sprites.destroy(Spinny_thing)
+        sprites.destroyAllSpritesOfKind(SpriteKind.Tree)
     }
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.eye, function (sprite, otherSprite) {
@@ -419,6 +421,12 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Heart, function (sprite, otherSp
     pause(20000)
     HP_giver = sprites.create(assets.image`Heart`, SpriteKind.Heart)
     tiles.placeOnTile(HP_giver, tiles.getTileLocation(randint(1, 30), randint(1, 64)))
+})
+info.onCountdownEnd(function () {
+    music.play(music.stringPlayable("E D G F B A C5 B ", 120), music.PlaybackMode.UntilDone)
+    game.setGameOverPlayable(true, music.melodyPlayable(music.powerUp), false)
+    info.setScore(1000)
+    game.gameOver(true)
 })
 scene.onOverlapTile(SpriteKind.Player, sprites.builtin.forestTiles10, function (sprite, location) {
     Ooglyboogly.follow(Player_1, 0)
@@ -1017,7 +1025,7 @@ game.setDialogFrame(img`
     b b b b d d d d d d d d d d 1 
     b b b b b b b b b b b b b b b 
     `)
-game.showLongText("Dear reader, escape from Ooglybooglys forest. He'll take your toes! -Bob", DialogLayout.Center)
+game.showLongText("Dear reader, escape from Ooglybooglys forest. He'll take your toes! -Bob    :(|)", DialogLayout.Center)
 game.setDialogCursor(assets.image`OOGLYBOOGLY`)
 music.setVolume(255)
 info.setLife(3)
@@ -1290,6 +1298,7 @@ GHost = sprites.create(img`
     ........................
     `, SpriteKind.Hearing)
 tiles.placeOnRandomTile(GHost, sprites.builtin.forestTiles10)
+game.setGameOverScoringType(game.ScoringType.HighScore)
 game.onUpdateInterval(randint(5000, 10000), function () {
     HP_giver.sayText("Thump, thump.", 1000, true)
 })
